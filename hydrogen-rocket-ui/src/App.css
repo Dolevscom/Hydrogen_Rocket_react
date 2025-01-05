@@ -1,0 +1,262 @@
+.bar-container {
+    width: 50px;
+    height: 300px;
+    border: 1px solid black;
+    position: relative;
+  }
+  
+  body {
+      background-color: #E5FCF9;
+  }
+  
+  img {
+      background-color: #E5FCF9; /* Optional for transparency */
+  }
+  
+  .bar {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: height 0.5s;
+  }
+  
+  @font-face {
+      font-family: 'SimplerPro';
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Regular.otf') format('opentype');
+      font-weight: 400; /* Regular */
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'SimplerPro';
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Semibold.otf') format('opentype');
+      font-weight: 600; /* Semi-Bold */
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'SimplerPro';
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Black.otf') format('opentype');
+      font-weight: 900; /* Black */
+      font-style: normal;
+  }
+  
+  .Hebrew, .English, .Arabic {
+      font-family: 'SimplerPro', sans-serif;
+      font-weight: 400; /* Default weight */
+  }
+  
+  .h1-bold {
+      font-weight: 900; /* Black */
+      font-size: 4rem;
+      margin-bottom: 10px;
+  }
+  
+  .h2-semi-bold {
+      font-weight: 600; /* Semi-Bold */
+  }
+  
+  .h3-regular {
+      font-weight: 400; /* Regular */
+      font-size: 3rem;
+      margin-bottom: 10px;
+  }
+  
+  h1 {
+      font-size: 8vw; /* Dynamically scale based on viewport width */
+      margin-bottom: 20px;
+  }
+  
+  h2 {
+      font-size: 5vw;
+  }
+  
+  p {
+      font-size: 3vw;
+  }
+  
+  
+  .App {
+      text-align: center;
+  }
+  
+  .App-header {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Align content towards the top */
+      align-items: center;
+      min-height: 100vh; /* Full viewport height */
+      padding-top: 10vh; /* Push content down */
+  }
+  
+  .language-selector {
+      margin-bottom: 20px;
+  }
+  
+  
+  .bottom-text {
+      margin-top: 40px; /* Add more space below the stats */
+  }
+  
+  .language-selector button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  
+  .content {
+      margin: 50px auto;
+      text-align: center;
+      width: 80%;
+      direction: ltr; /* Default direction for English */
+  }
+  
+  /* Hebrew and Arabic-specific styles for RTL */
+  .Hebrew, .Arabic {
+      direction: rtl;
+      text-align: center;
+      margin: 50px auto;
+  }
+  
+  .English {
+      text-align: center;
+      direction: ltr;
+      margin: 50px auto
+  }
+  
+  .stats-container {
+      display: flex;
+      justify-content: space-between; /* Align elements on opposite sides */
+      align-items: center; /* Center vertically if needed */
+      /*margin: 20px 10%;*/
+      margin-top: 80px;
+  }
+  
+  .stats-item {
+      text-align: center;
+      width: 30%; /* Optional: Control width of each stat */
+      font-size: 1.2rem; /* Adjust the size of the stats text */
+  
+  }
+  
+  /* Text size adjustments for specific elements */
+  .Hebrew h1, .English h1, .Arabic h1 {
+      font-size: 3rem; /* Adjust the size of the main title */
+      margin-bottom: 20px; /* Add space below the title */
+  }
+  
+  .Hebrew h2, .English h2, .Arabic h2 {
+      font-size: 2rem; /* Adjust the size of secondary titles */
+  }
+  
+  .Hebrew p, .English p, .Arabic p {
+      font-size: 1.5rem; /* Adjust the size of paragraph text */
+  }
+  
+  
+  
+  .full-screen-image-wrapper {
+    position: relative; /* Keep it positioned relative to its parent container */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center the image */
+    width: 100%;
+    height: 80vh; /* Use a smaller height to limit the wrapper */
+    margin-top: -50px; /* Negative margin to pull it higher */
+    overflow: hidden; /* Ensure the image doesn't overflow */
+    background-color: #E5FCF9; /* Optional background color */
+}
+
+.full-screen-image {
+    width: auto; /* Scale proportionally */
+    height: 90%; /* Keep the image large while fitting in the wrapper */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+  
+  
+  /* GIF container for the centered animation */
+  .gif-container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1; /* Ensure it's above the background image */
+      width: 100%;
+      height: auto;
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+  }
+  
+  /* Styling for the centered GIF */
+  .centered-gif {
+      width: 20%; /* Adjust size as needed */
+      height: auto;
+      object-fit: contain;
+  }
+  
+  .arduino-data {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #333;
+      text-align: center;
+  }
+  
+  .data-screen-side-by-side {
+      display: flex;
+      justify-content: space-around; /* Space out items evenly */
+      align-items: flex-start; /* Align items to the top */
+      width: 100%;
+      padding: 10px 20px; /* Reduce padding for vertical alignment */
+      margin-top: 20px; /* Adjust the spacing below the subtitle */}
+  
+  .data-item {
+      text-align: center;
+      flex: 1; /* Ensure items take equal space */
+      position: relative;
+  }
+  
+  /* Bar Graph (Vertical) */
+  .bar-graph-container-vertical {
+      width: 40px; /* Increase width for better visibility */
+      height: 300px; /* Taller bar graph */
+      background-color: #ccc; /* Bar graph background */
+      border-radius: 10px;
+      margin: 20px auto;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end; /* Align the bar graph to the bottom */
+  }
+  
+  .bar-graph-vertical {
+      width: 100%; /* Full width of the container */
+      transition: height 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Gauge Clock */
+  .gauge-container {
+      width: 200px; /* Increase gauge width */
+      height: 100px; /* Adjust for larger half-circle */
+      background-color: #b7f4e4; /* Gauge background */
+      border-radius: 100px 100px 0 0; /* Make it a half-circle */
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto; /* Add more space around */
+  }
+  
+  .gauge {
+      width: 15px; /* Wider pointer */
+      height: 100px; /* Longer pointer */
+      background-color: #000fed; /* Pointer color */
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform-origin: bottom center;
+      transition: transform 0.3s ease; /* Smooth pointer movement */
+  }
+  
+  
+  
+  
