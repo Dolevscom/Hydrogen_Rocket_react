@@ -1,19 +1,27 @@
 import React from "react";
 import { BaseApp } from "./BaseApp";
 import "./App.css";
+import AmpereGauge from "./components//AmpereGuage/AmpereGauge";
+import BarGraph from "./components/BarGraph/BarGraph";
 import startHebrew from './assets/start_screen/start_new_heb.jpg';
 import startEnglish from './assets/start_screen/start_new_eng.png';
 import startArabic from './assets/start_screen/start_new_arab.png';
 import endHebrew from './assets/end_screen/end heb.png';
 import endEnglish from './assets/end_screen/end eng.png';
 import endArabic from './assets/end_screen/end arab.png';
+import midScreenEng from './assets/middle_screen/mid_screen_eng.png';
+import midScreenHeb from './assets/middle_screen/mid_screen_heb.png';
+import midScreenArab from './assets/middle_screen/mid_screen_heb.png';
+import regularFont from './assets/fonts/SimplerPro_HLAR-Regular.otf';
+
+
 
 class App extends BaseApp {
     constructor(props) {
         super(props);
         this.state = {
             ...this.state, // Include BaseApp state
-            screen: "opening", // Default to the opening screen
+            screen: "main", // Default to the opening screen
             language: "Hebrew", // Default language
             rawArduinoData: "", // Raw data from Arduino
             arduinoData: {
@@ -24,6 +32,7 @@ class App extends BaseApp {
             }, // Initialize with default values
         };
     }
+
 
     handleMessage = (event) => {
         // console.log("WebSocket message received:", event);
@@ -77,7 +86,7 @@ class App extends BaseApp {
             if (ignition === 1 && charge >= 100) {
                 console.log("Ignition button pressed with sufficient charge. Transitioning to ending screen...");
                 setTimeout(() => {
-                    this.setState({ screen: "ending" });
+                    this.setState({ screen: "opening" });
                     console.log("Screen transitioned to 'ending'.");
                 }, 3000); // 3-second delay
             }
@@ -87,12 +96,12 @@ class App extends BaseApp {
     };
     
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.screen === "ending" && prevState.screen !== "ending") {
-            this.endingTimeout = setTimeout(() => {
-                console.log("Timeout reached. Returning to opening screen...");
-                this.setState({ screen: "opening" });
-            }, 30000); // 30 seconds
-        }
+        // if (this.state.screen === "main" && prevState.screen !== "main") {
+        //     this.endingTimeout = setTimeout(() => {
+        //         console.log("Timeout reached. Returning to opening screen...");
+        //         this.setState({ screen: "opening" });
+        //     }, 30000); // 30 seconds
+        // }
     
         if (prevState.screen === "ending" && this.state.screen !== "ending") {
             clearTimeout(this.endingTimeout); // Clear timeout if user leaves ending screen early
@@ -123,8 +132,8 @@ class App extends BaseApp {
     moveToNextScreen = () => {
         this.setState((prevState) => {
             if (prevState.screen === "opening") return { screen: "main" };
-            if (prevState.screen === "main") return { screen: "ending" };
-            if (prevState.screen === "ending") return { screen: "opening" };
+            if (prevState.screen === "main") return { screen: "opening" };
+            // if (prevState.screen === "ending") return { screen: "opening" };
             return prevState;
         });
     };
@@ -190,8 +199,8 @@ class App extends BaseApp {
         const currentLabels = labels[language];
 
         const getBottomText = (charge) => {
-            if (charge < 100) return currentLabels.text1;
-            if (charge >= 100 && charge <= 120) return currentLabels.text2;
+            if (charge < 85) return currentLabels.text1;
+            if (charge >= 85 && charge <= 100) return currentLabels.text2;
             return currentLabels.text3;
         };
 
@@ -206,6 +215,10 @@ class App extends BaseApp {
                 if (language === "Hebrew") return endHebrew;
                 if (language === "English") return endEnglish;
                 if (language === "Arabic") return endArabic;
+            } else if (screen === "main") {
+                if (language === "Hebrew") return midScreenHeb;
+                if (language === "English") return midScreenEng;
+                if (language === "Arabic") return midScreenArab;
             }
             return null; // No image for the main screen
         };
@@ -221,88 +234,150 @@ class App extends BaseApp {
             return (value / maxValue) * 180; // Scale to half-circle (180 degrees)
         };
 
-        if (screen === "opening") {
-            return (
-                <div className="full-screen-image-wrapper">
-                    <img
-                        src={getImagePath(screen, language)}
-                        alt={`${screen} screen`}
-                        className="full-screen-image"
-                    />
-                    
-                </div>
-            );
-        }
+    if (screen === "opening") {
+    return (
+        <div
+            style={{
+                position: "fixed", // Fill the entire viewport
+                top: 0,
+                left: 0,
+                width: "100vw", // Full width of the viewport
+                height: "100vh", // Full height of the viewport
+            }}
+        >
+            <img
+                src={getImagePath(screen, language)}
+                alt={`${screen} screen`}
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover", // Ensures the image scales proportionally
+                    display: "block",
+                }}
+            />
+        </div>
+    );
+}
+if (screen === "main") {
+    return (
+        <div
+            style={{
+                position: "fixed", // Ensures it fills the viewport
+                top: "50%", // Center vertically
+                left: "50%", // Center horizontally
+                width: "90vw", // Adjust width to fit within the viewport
+                height: "90vh", // Adjust height to fit within the viewport
+                transform: "translate(-50%, -50%)", // Center the div
+                backgroundColor: "black", // Optional background color to test alignment
+            }}
+        >
+            {/* Render the layout image */}
+            <img
+                src={getImagePath(screen, language)}
+                alt="Middle Screen Layout"
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain", // Contain the image within the div
+                    display: "block",
+                }}
+            />
 
-        if (screen === "main") {
-            return (
-                <>
-                    <h1 className={`${language} h1-bold`}>
-                        {language === "Hebrew"
-                            ? "טיל מימן"
-                            : language === "English"
-                            ? "Hydrogen Rocket"
-                            : "صاروخ الهيدروجين"}
-                    </h1>
-                    <p className={`${language} h3-regular`}>
-                        {language === "Hebrew"
-                            ? "סובבו את ידית הגנרטור על מנת ליצור מתח חשמלי"
-                            : language === "English"
-                            ? "Turn the generator handle to generate electrical voltage."
-                            : "قم بتدوير مقبض المولد لتوليد الجهد الكهربائي."}
-                    </p>
-                    <div className="data-screen-side-by-side">
-                        <div className="data-item">
-                            <h2 className={`${language} data-label`}>{currentLabels.data1}</h2>
-                            <p className={`${language} data-value`}>
-                                {arduinoData.current.toFixed(2)} {currentLabels.unit1}
-                            </p>
-                            <div className="gauge-container">
-                                <div
-                                    className="gauge"
-                                    style={{
-                                        transform: `rotate(${gaugeRotation(
-                                            arduinoData.current
-                                        )}deg)`,
-                                    }}
-                                ></div>
-                            </div>
-                        </div>
+            {/* Arduino Text: Ampere */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: "50.5%", // Adjust the top position for Ampere text
+                    left: "47%", // Adjust the left position
+                    fontSize: "6rem", // Adjust text size
+                    color: "black", // Text color
+                    textAlign: "center", // Center text alignment
+                    font: regularFont
+                }}
+            >
+                {arduinoData.current.toFixed(0)} A
+            </div>
 
-                        <div className="data-item">
-                            <h2 className={`${language} data-label`}>{currentLabels.data2}</h2>
-                            <p className={`${language} data-value`}>
-                                {arduinoData.charge.toFixed(2)} {currentLabels.unit2}
-                            </p>
-                            <div className="bar-graph-container-vertical">
-                                <div
-                                    className="bar-graph-vertical"
-                                    style={{
-                                        height: `${arduinoData.charge}%`,
-                                        backgroundColor: barGraphColor(arduinoData.charge),
-                                    }}
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bottom-text">
-                        <p className={`${language} h3-regular`}>{bottomText}</p>
-                    </div>
-                </>
-            );
-        }
+            {/* Arduino Text: Coulomb */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: "95%", // Adjust the top position for Coulomb text
+                    left: "47%", // Adjust the left position
+                    fontSize: "6rem", // Adjust text size
+                    color: "black", // Text color
+                    textAlign: "center", // Center text alignment
+                    font: regularFont
+                }}
+            >
+                {arduinoData.charge.toFixed(0)} C
+            </div>
 
-        if (screen === "ending") {
-            return (
-                <div className="full-screen-image-wrapper">
-                    <img
-                        src={getImagePath(screen, language)}
-                        alt={`${screen} screen`}
-                        className="full-screen-image"
-                    />
-                </div>
-            );
-        }
+            {/* Ampere Gauge */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: "27%", // Adjust the top position
+                    left: "40%", // Adjust the left position
+                    width: "20%", // Adjust width as needed
+                    height: "auto", // Maintain aspect ratio
+                    transform: "scale(8)", // Adjust the size of the component
+                }}
+            >
+                <AmpereGauge
+                    currentValue={arduinoData.current}
+                    maxValue={30}
+                    className="ampere-gauge"
+                    style={{
+                        width: "100%", // Ensure the bar graph fills its container
+                        height: "auto", // Maintain aspect ratio
+                    }}
+                />
+            </div>
+
+            {/* Bar Graph */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: "80%", // Adjust the top position
+                    right: "37%", // Adjust the right position
+                    width: "20%", // Adjust width as needed
+                    height: "10%", // Maintain aspect ratio
+                    transform: "scale(4)", // Adjust the size of the component
+                }}
+            >
+                <BarGraph
+                    charge={arduinoData.charge}
+                    maxCharge={150}
+                    className="bar-graph"
+                    style={{
+                        width: "100%", // Ensure the bar graph fills its container
+                        height: "auto", // Maintain aspect ratio
+                    }}
+                />
+            </div>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+        // if (screen === "ending") {
+        //     return (
+        //         <div className="full-screen-image-wrapper">
+        //             <img
+        //                 src={getImagePath(screen, language)}
+        //                 alt={`${screen} screen`}
+        //                 className="full-screen-image"
+        //             />
+        //         </div>
+        //     );
+        // }
     }
 
     render() {

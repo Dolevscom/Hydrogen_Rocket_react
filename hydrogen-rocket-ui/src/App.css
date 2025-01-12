@@ -22,21 +22,21 @@
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Regular.otf') format('opentype');
+      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Regular.otf') format('opentype');
       font-weight: 400; /* Regular */
       font-style: normal;
   }
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Semibold.otf') format('opentype');
+      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Semibold.otf') format('opentype');
       font-weight: 600; /* Semi-Bold */
       font-style: normal;
   }
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/public/assets/fonts/SimplerPro_HLAR-Black.otf') format('opentype');
+      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Black.otf') format('opentype');
       font-weight: 900; /* Black */
       font-style: normal;
   }
@@ -204,58 +204,43 @@
       text-align: center;
   }
   
-  .data-screen-side-by-side {
-      display: flex;
-      justify-content: space-around; /* Space out items evenly */
-      align-items: flex-start; /* Align items to the top */
-      width: 100%;
-      padding: 10px 20px; /* Reduce padding for vertical alignment */
-      margin-top: 20px; /* Adjust the spacing below the subtitle */}
-  
+.data-screen-side-by-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.data-item {
+  flex: 1; /* Ensure equal space allocation */
+  text-align: center;
+}
+
   .data-item {
       text-align: center;
       flex: 1; /* Ensure items take equal space */
       position: relative;
   }
   
-  /* Bar Graph (Vertical) */
-  .bar-graph-container-vertical {
-      width: 40px; /* Increase width for better visibility */
-      height: 300px; /* Taller bar graph */
-      background-color: #ccc; /* Bar graph background */
-      border-radius: 10px;
-      margin: 20px auto;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end; /* Align the bar graph to the bottom */
-  }
-  
-  .bar-graph-vertical {
-      width: 100%; /* Full width of the container */
-      transition: height 0.3s ease, background-color 0.3s ease; /* Smooth transition */
-  }
-  
-  /* Gauge Clock */
-  .gauge-container {
-      width: 200px; /* Increase gauge width */
-      height: 100px; /* Adjust for larger half-circle */
-      background-color: #b7f4e4; /* Gauge background */
-      border-radius: 100px 100px 0 0; /* Make it a half-circle */
-      position: relative;
-      overflow: hidden;
-      margin: 20px auto; /* Add more space around */
-  }
-  
-  .gauge {
-      width: 15px; /* Wider pointer */
-      height: 100px; /* Longer pointer */
-      background-color: #000fed; /* Pointer color */
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform-origin: bottom center;
-      transition: transform 0.3s ease; /* Smooth pointer movement */
-  }
+/* Middle screen layout container */
+.middle-screen-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Background layout image */
+.middle-screen-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image scales without distortion */
+    z-index: 0; /* Background layer */
+}
+
+
   
   
   

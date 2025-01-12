@@ -1,0 +1,39 @@
+.bar-graph-wrapper {
+  position: relative;
+  width: 100px; /* Match the desired bar graph width */
+  height: 300px; /* Match the desired bar graph height */
+  margin: 0 auto; /* Center horizontally */
+    background: transparent; /* Set the background to transparent */
+}
+
+.container-image {
+  position: absolute;
+  top: -135px;
+  left: -72px;
+  width: 200%; /* Match the wrapper width */
+  height: 200%; /* Match the wrapper height */
+  z-index: 1; /* Place behind the bar graph */
+  object-fit: cover; /* Ensure the image scales properly */
+  background: transparent; /* Set the background to transparent */
+
+}
+
+.bar-graph {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 93%;
+  z-index: 2; /* Place above the container image */
+  overflow: hidden;
+  background: transparent; /* Set the background to transparent */
+}
+
+.bar-graph-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Dynamic height based on charge */
+  transition: height 0.5s ease-out, background-color 0.5s ease-out; /* Smooth animations */
+}
