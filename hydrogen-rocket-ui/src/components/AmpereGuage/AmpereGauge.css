@@ -1,0 +1,41 @@
+.gauge-container {
+  position: relative;
+  width: 300px; /* Match the width of the gauge */
+  height: 150px; /* Half the width for a semicircle */
+  margin: auto;
+    background: transparent; /* Set the background to transparent */
+
+}
+
+.gauge-image {
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+    background: transparent; /* Set the background to transparent */
+
+}
+
+.gauge-needle {
+  position: absolute;
+  bottom: -20%; /* Align with the base of the gauge */
+  left: 25%; /* Center horizontally */
+  width: 100%; /* Match the size of the container */
+  width: 50%; /* Match the size of the container */
+  height: 50%; /* Match the size of the container */
+  background-image: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/Components/Gauge/pointer_S.png'); /* Path to the pointer */
+  background-size: contain; /* Scale the image proportionally */
+  background-repeat: no-repeat;
+  background-position: center; /* Center the image */
+  transform-origin: bottom center; /* Rotate around the correct base point */
+  transition: transform 0.5s ease-out; /* Smooth animation */
+  transform: translate(-50%, 0) rotate(0deg); /* Center it and rotate */
+  transform-origin: bottom center;
+}
+
+.gauge-value {
+  position: absolute;
+  bottom: -50px; /* Adjust to sit below the gauge */
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+}
