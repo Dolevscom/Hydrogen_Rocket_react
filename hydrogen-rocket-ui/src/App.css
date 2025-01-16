@@ -22,21 +22,21 @@
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Regular.otf') format('opentype');
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Regular.otf') format('opentype');
       font-weight: 400; /* Regular */
       font-style: normal;
   }
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Semibold.otf') format('opentype');
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Semibold.otf') format('opentype');
       font-weight: 600; /* Semi-Bold */
       font-style: normal;
   }
   
   @font-face {
       font-family: 'SimplerPro';
-      src: url('/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Black.otf') format('opentype');
+      src: url('/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/src/assets/fonts/SimplerPro_HLAR-Black.otf') format('opentype');
       font-weight: 900; /* Black */
       font-style: normal;
   }

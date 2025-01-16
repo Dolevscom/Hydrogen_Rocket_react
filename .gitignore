@@ -2,3 +2,5 @@ my_env/
 basic_assets/
 node_modules/
 hydrogen-rocket-ui/node_modules
+hydrogen-rocket-ui/public/assets/fonts/*.ttf
+hydrogen-rocket-ui/public/assets/fonts/*.otf

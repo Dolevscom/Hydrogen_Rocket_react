@@ -1,7 +1,7 @@
 import React from "react";
 import "./AmpereGauge.css";
-import container from "/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/Components/Gauge/container.png";
-import pointer from "/Users/dolevsmac/PycharmProjects/Hydrogen_Rocket_react/hydrogen-rocket-ui/src/assets/Components/Gauge/pointer_S.png";
+import container from "/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/src/assets/Components/Gauge/container.png";
+import pointer from "/home/mada/Desktop/Hydrogen_Rocket/hydrogen-rocket-ui/src/assets/Components/Gauge/pointer_S.png";
 
 const AmpereGauge = ({ currentValue, maxValue }) => {
   const needleAngle = (currentValue / maxValue) * 180;
