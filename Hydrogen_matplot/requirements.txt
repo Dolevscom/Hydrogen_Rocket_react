@@ -1,5 +1,0 @@
-matplotlib
-Pillow
-numpy
-python-bidi
-arabic-reshaper
