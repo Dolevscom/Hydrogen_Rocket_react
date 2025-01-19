@@ -3,15 +3,12 @@ import { BaseApp } from "./BaseApp";
 import "./App.css";
 import AmpereGauge from "./components//AmpereGuage/AmpereGauge";
 import BarGraph from "./components/BarGraph/BarGraph";
-import startHebrew from './assets/start_screen/start_new_heb.jpg';
-import startEnglish from './assets/start_screen/start_new_eng.png';
-import startArabic from './assets/start_screen/start_new_arab.png';
-import endHebrew from './assets/end_screen/end heb.png';
-import endEnglish from './assets/end_screen/end eng.png';
-import endArabic from './assets/end_screen/end arab.png';
-import midScreenEng from './assets/middle_screen/mid_screen_eng.png';
-import midScreenHeb from './assets/middle_screen/mid_screen_heb.png';
-import midScreenArab from './assets/middle_screen/mid_screen_heb.png';
+import startHebrew from './assets/start_screen/start_hebrew.png';
+import startEnglish from './assets/start_screen/start_english.png';
+import startArabic from './assets/start_screen/start_arabic.png';
+import midScreenEng from './assets/middle_screen/middle_english.png';
+import midScreenHeb from './assets/middle_screen/middle_hebrew.png';
+import midScreenArab from './assets/middle_screen/middle_arabic.png';
 import regularFont from './assets/fonts/SimplerPro_HLAR-Regular.otf';
 
 
@@ -276,7 +273,7 @@ class App extends BaseApp {
                 <div
                     style={{
                         position: "absolute",
-                        top: "50%", // Adjust the top position for Ampere text
+                        top: "47.3%", // Adjust the top position for Ampere text
                         left: "47%", // Adjust the left position
                         fontSize: "2.5rem", // Adjust text size
                         color: "black", // Text color
@@ -291,8 +288,8 @@ class App extends BaseApp {
                 <div
                     style={{
                         position: "absolute",
-                        top: "94.8%", // Adjust the top position for Coulomb text
-                        left: "47%", // Adjust the left position
+                        top: "90.3%", // Adjust the top position for Coulomb text
+                        left: "47.5%", // Adjust the left position
                         fontSize: "2.5rem", // Adjust text size
                         color: "black", // Text color
                         textAlign: "center", // Center text alignment
@@ -306,7 +303,7 @@ class App extends BaseApp {
                 <div
                     style={{
                         position: "absolute",
-                        top: "21%", // Adjust the top position
+                        top: "18%", // Adjust the top position
                         left: "34%", // Adjust the left position
                         width: "30%", // Adjust width as needed
                         height: "auto", // Maintain aspect ratio
@@ -328,7 +325,7 @@ class App extends BaseApp {
                 <div
                     style={{
                         position: "absolute",
-                        top: "65%", // Adjust the top position
+                        top: "62%", // Adjust the top position
                         right: "36.8%", // Adjust the right position
                         width: "20%", // Adjust width as needed
                         height: "10%", // Maintain aspect ratio
@@ -350,23 +347,6 @@ class App extends BaseApp {
     }
 
 
-
-
-
-
-
-
-        // if (screen === "ending") {
-        //     return (
-        //         <div className="full-screen-image-wrapper">
-        //             <img
-        //                 src={getImagePath(screen, language)}
-        //                 alt={`${screen} screen`}
-        //                 className="full-screen-image"
-        //             />
-        //         </div>
-        //     );
-        // }
     }
 
     render() {
